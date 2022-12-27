@@ -22,8 +22,10 @@ func main() {
 	fmt.Scanln(&a)
 
 	// Calculate division
-	result := taxes(a)
+	totalPrice := taxes(a)
 
 	// Data output
-	fmt.Printf("Price with taxes: %f \n", result)
+	// fmt verbs -> https://pkg.go.dev/fmt
+	result := fmt.Sprintf("%.2f", totalPrice)
+	fmt.Printf("Price with taxes: %s \n", result)
 }
