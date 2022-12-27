@@ -34,4 +34,16 @@ func main() {
 	students["Miles"] = []int{2, 4, 6, 8}
 	fmt.Println(students, len(students))
 	fmt.Println(students["Miles"][3])
+
+	fmt.Println("Maps 3 -----------------------")
+
+	users := make(map[string]string)
+	users["Kurt"] = "Grunge"
+	users["Miles"] = "Jazz"
+
+	user, exist := users["Kurt"]
+	fmt.Println(user, exist)
+
+	user, exist = users["NoExist"]
+	fmt.Println(user, exist)
 }

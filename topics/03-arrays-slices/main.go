@@ -47,8 +47,8 @@ func main() {
 	fmt.Println("Slices 2 ------------------------")
 
 	months := []string{"January", "February"}
-	fmt.Printf("Len: %v, Cap: %v, MemRef: %p  \n", len(months), cap(months), months)
+	fmt.Printf("Len: %v, Cap: %v, MemRef: %p \n", len(months), cap(months), months)
 
 	months = append(months, "March", "April")
-	fmt.Printf("Len: %v, Cap: %v, MemRef: %p  \n", len(months), cap(months), months)
+	fmt.Printf("Len: %v, Cap: %v, MemRef: %p \n", len(months), cap(months), months)
 }
