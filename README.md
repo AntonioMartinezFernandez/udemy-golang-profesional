@@ -1,4 +1,4 @@
-# Golang Tips
+# Golang Course (and Tips)
 
 ## Course
 
@@ -39,10 +39,88 @@ Example:
 go get github.com/donvito/hellomod
 ```
 
-## Install all third party packages required
+## Install all required third party packages
 
 From the root folder of the project (where is located the go.mod file):
 
 ```
 go mod tidy
+```
+
+## Test
+
+```
+go test ./folder_with_tests
+```
+
+Example:
+
+```
+go test ./topics/28-basic-testing/
+```
+
+## Test Coverage
+
+```
+go test -cover ./folder_with_tests
+```
+
+Example:
+
+```
+go test -cover ./topics/28-basic-testing/
+```
+
+### More coverage info
+
+```
+go test ./folder_with_tests -coverprofile=coverage
+go tool cover -func=coverage
+```
+
+Example:
+
+```
+go test ./topics/28-basic-testing/ -coverprofile=coverage
+go tool cover -func=coverage
+```
+
+### HTML coverage info
+
+```
+go test ./folder_with_tests -coverprofile=coverage
+go tool cover -html=coverage
+```
+
+Example:
+
+```
+go test ./topics/28-basic-testing/ -coverprofile=coverage
+go tool cover -html=coverage
+```
+
+## Test Profile
+
+Install [graphviz](https://graphviz.org/)
+
+```
+go test ./folder_with_tests -cpuprofile=profile
+go tool pprof profile
+top
+list functionName
+web
+pdf
+quit
+```
+
+Example:
+
+```
+go test ./topics/28-basic-testing/ -cpuprofile=profile
+go tool pprof profile
+top
+list Fibonacci
+web
+pdf
+quit
 ```
