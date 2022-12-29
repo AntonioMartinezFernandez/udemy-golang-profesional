@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"udemy-golang-profesional/pkg/variables"
 )
 
 func main() {
@@ -10,10 +9,24 @@ func main() {
 	fmt.Println("Basic -----------------------")
 
 	fmt.Println("Hello", "World", "!")
-	fmt.Println(variables.Integer())
-	fmt.Println(variables.String())
+	fmt.Println(Integer())
+	fmt.Println(String())
 	fmt.Printf("String: %s - Number: %d \n", "mystring", 5)
 	text := fmt.Sprintf("text and variable %s", "string variable")
 	fmt.Println(text)
-	fmt.Println(variables.VarType(3))
+	fmt.Println(VarType(3))
+}
+
+func Integer() int {
+	integer := 2
+	return integer
+}
+
+func String() string {
+	string := "string"
+	return string
+}
+
+func VarType(Var int) string {
+	return fmt.Sprintf("%T", Var)
 }
