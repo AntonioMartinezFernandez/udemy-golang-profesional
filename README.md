@@ -1,4 +1,4 @@
-# Tips
+# Golang Tips
 
 ## Course
 
@@ -13,5 +13,5 @@ go run mainFile.go
 ## New Project
 
 ```
-go mod init
+go mod init repo-or-project-name
 ```

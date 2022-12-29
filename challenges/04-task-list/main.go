@@ -58,7 +58,7 @@ func (t *Task) markCompleted() {
 	t.completed = true
 }
 
-// Task List
+// TaskList Class
 type TaskList struct {
 	Tasks []*Task
 }
