@@ -13,8 +13,8 @@ go run mainFile.go
 Examples:
 
 ```
-go run .\topics\25-packages\main.go
-go run .\challenges\06-geometry-modules\main.go
+go run ./topics/27-with-concurrency/main.go
+go run ./challenges/06-geometry-modules/main.go
 ```
 
 ## New Project
@@ -30,7 +30,7 @@ go mod init repo-or-project-name
 From the root folder of the project (where is located the go.mod file):
 
 ```
-go get package_url
+go get package_repo_url
 ```
 
 Example:
