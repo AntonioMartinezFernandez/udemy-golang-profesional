@@ -59,6 +59,12 @@ Example:
 go test ./topics/28-basic-testing/
 ```
 
+or execute tests located in all subdirectories:
+
+```
+go test ./...
+```
+
 ## Test Coverage
 
 ```
@@ -123,4 +129,24 @@ list Fibonacci
 web
 pdf
 quit
+```
+
+## Install Air (Live reload for Go apps)
+
+```
+go install github.com/cosmtrek/air@latest
+air init
+air
+```
+
+## Execute Air with custom .air.toml
+
+```
+air -c .air.custom.toml
+```
+
+Example:
+
+```
+air -c .air.webserver.toml
 ```
