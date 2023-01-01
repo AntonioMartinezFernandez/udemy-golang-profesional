@@ -1,2 +1,6 @@
 github.com/donvito/hellomod v1.0.1 h1:tOU3KDwvrGW7QUHXYQnk6YUD+92aTsRmJItJTD9f4I4=
 github.com/donvito/hellomod v1.0.1/go.mod h1:DuOSvrBCwGkjX0WS5ohdpC/q67fS0Mde3LEM+2jeHSw=
+github.com/go-sql-driver/mysql v1.7.0 h1:ueSltNNllEqE3qcWBTD0iQd3IpL/6U+mJxLkazJ7YPc=
+github.com/go-sql-driver/mysql v1.7.0/go.mod h1:OXbVy3sEdcQ2Doequ6Z5BW6fXNQTmx+9S1MCJN5yJMI=
+github.com/gorilla/mux v1.8.0 h1:i40aqfkR1h2SlN9hojwV5ZA91wcXFOvkdNIeFDP5koI=
+github.com/gorilla/mux v1.8.0/go.mod h1:DVbg23sWSpFRCP0SfiEN6jmj59UnW/n46BH5rLB71So=
