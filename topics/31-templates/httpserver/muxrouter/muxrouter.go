@@ -3,7 +3,7 @@ package muxrouter
 import (
 	"net/http"
 
-	"github.com/AntonioMartinezFernandez/udemy-golang-profesional/topics/30-mux-webserver/httpserver/handlers"
+	"github.com/AntonioMartinezFernandez/udemy-golang-profesional/topics/31-templates/httpserver/handlers"
 )
 
 func CreateMuxRouter() *http.ServeMux {

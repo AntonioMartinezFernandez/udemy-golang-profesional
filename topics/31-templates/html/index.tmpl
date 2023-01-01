@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>HTML Template</title>
+    <meta name="author" content="AMF" />
+
+    <meta property="og:title" content="HTML Template" />
+    <meta property="og:type" content="website" />
+
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+
+  <body>
+    <!-- Use header template -->
+    {{ template "header" }}
+
+    <h1>GO HTML TEMPLATE</h1>
+    <img src="/static/dancing-gopher.gif">
+    <h2>User Data</h2>
+    <p>Name: {{ .Name }}</p>
+    <p>Age: {{ .Age }}</p>
+
+    <!-- Variables -->
+
+    {{ with $myVar := "My variable" }}
+    <p>{{$myVar}}</p>
+    {{ end }}
+
+    <!-- Conditionals -->
+    {{ if not .Active }}
+      <p>User is not active</p>
+    {{else}}
+      <p>User is active</p>
+    {{ end }}
+    
+    {{ if(and .Active .Admin) }}
+      <p>User is admin</p>
+    {{ end }}
+
+    {{ if gt .Age 100 }}
+      <p>User is older than 100 years </p>
+    {{ else }}
+      <p>User is younger than 100 years </p>
+    {{ end }}
+
+    <!-- Iterators -->
+    <p>Courses</p>
+    <ul>
+      {{ range .Courses }}
+        <li>{{ .Title }}</li>
+      {{ end }}
+    </ul>
+
+    <!-- Functions -->
+    {{ sayHello }}
+
+    <!-- Use footer template -->
+    {{ template "footer" }}
+
+    <script src="/static/script.js"></script>
+  </body>
+</html>
