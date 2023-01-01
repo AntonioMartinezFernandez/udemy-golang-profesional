@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"net/http"
 	"time"
@@ -18,7 +19,7 @@ func main() {
 		"https://www.amazon.com",
 		"https://www.youtube.com",
 		"https://www.antoniomartinezinventedurl.com",
-		"https://www.twitter.com",
+		"https://twitter.com",
 		"https://www.wikipedia.org",
 		"https://www.reddit.com",
 		"https://www.anotherinventedurl.site",
@@ -26,18 +27,18 @@ func main() {
 	}
 
 	/* Create channel */
-	channel := make(chan string)
+	stringChannel := make(chan string)
 
 	/*
 		Pass the channel to be used by the algorithm
 	*/
-	testServers(servers, channel)
+	testServers(servers, stringChannel)
 
 	/*
 		Print channel content (string) each time it is used (one time for every server)
 	*/
-	for i := 0; i < len(servers); i++ {
-		fmt.Println(<-channel)
+	for range servers {
+		fmt.Printf("%s\n", <-stringChannel)
 	}
 }
 
@@ -45,19 +46,39 @@ func main() {
 Receive the channel as parameter and pass it to the function with the logic
 */
 func testServers(servers []string, channel chan string) {
-	for _, server := range servers {
+	for i := 0; i < len(servers); i++ {
 		/*
 			Using the 'go' reserved word, all the calls will be executed simultaneously
 		*/
-		go httpChecker(server, channel)
+		go httpChecker(servers[i], channel)
 	}
 }
 
 func httpChecker(url string, channel chan string) {
-	_, err := http.Get(url)
-	if err != nil {
+	tr := &http.Transport{
+		MaxIdleConns:       20,
+		IdleConnTimeout:    10 * time.Second,
+		DisableCompression: true,
+	}
+
+	client := &http.Client{Transport: tr, CheckRedirect: func(req *http.Request, via []*http.Request) error {
+		// Allow a maximum of 15 redirects
+		if len(via) >= 15 {
+			return errors.New("too many redirects")
+		}
+		return nil
+	}}
+
+	req, reqError := http.NewRequest("GET", url, nil)
+	if reqError != nil {
+		panic(reqError)
+	}
+	req.Header.Set("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://google.com/bot.html)")
+
+	_, respError := client.Do(req)
+	if respError != nil {
 		// Assign the desired result to the channel
-		channel <- fmt.Sprintf("🔴 %s", url)
+		channel <- fmt.Sprintf("🔴 %s - Error: %s", url, respError)
 	} else {
 		// Assign the desired result to the channel
 		channel <- fmt.Sprintf("🟢 %s", url)
